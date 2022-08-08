@@ -6,4 +6,10 @@
     width: 24px;
     height: 24px;
     background-image: url("../../../images/profile__edit-button.svg");
+    transition: opacity 0.2s linear;
+    cursor: pointer;
+}
+
+.profile__edit-button:hover {
+    opacity: .6;
 }
