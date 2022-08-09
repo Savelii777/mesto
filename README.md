@@ -10,4 +10,4 @@
 
 ## Ссылка на проект:
 
-[ссылка](https://sporyshevsavelii.github.io/russian-travel/)
+[ссылка](https://savelii777.github.io/mesto/)
