@@ -1,5 +1,4 @@
-.profile__avatar{
-    border: 1px solid red;
+.profile__avatar {
     margin: 0;
     padding: 0;
     width: 120px;
@@ -9,4 +8,10 @@
     background-position: center;
     background-size: cover;
     border-radius: 50%;
+}
+
+@media screen and (max-width: 650px) {
+    .profile__avatar {
+        margin: 0 auto;
+    }
 }
