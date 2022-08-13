@@ -2,7 +2,17 @@
     position: relative;
     margin: 0 auto;
     padding: 0;
-    width: 100%;
+    width: calc((282px * 3) + (17px * 2));
     max-width: 1280px;
     min-width: 320px;
+}
+@media screen and (max-width: 900px) {
+    .main {
+        width: calc((282px * 2) + (17px * 1));
+    }
+}
+@media screen and (max-width: 600px) {
+    .main {
+        width: calc(282px + (19px * 2));
+    }
 }
