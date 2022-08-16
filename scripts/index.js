@@ -6,12 +6,12 @@ let inputJob = document.querySelector('.popup__input_type_job');
 let closeButton = document.querySelector('.popup__close-button');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__job');
-// let like_button = document.querySelectorAll('.element__like-button');
+// let likeButton = document.querySelectorAll('.element__like-button');
 
 
 editButton.addEventListener('click', showPopup);
 
-// like_button.forEach(like => {
+// likeButton.forEach(like => {
 //   like.addEventListener('click', (event) => {
 //     event.target.classList.toggle('element__like-button_active'); //решил для разнообразия сделать через цикл форич и стрелочную функцию
 //   })
