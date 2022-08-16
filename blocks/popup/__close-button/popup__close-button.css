@@ -9,6 +9,10 @@
     right: -40px;
     transition: opacity 0.2s linear;
     cursor: pointer;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
 }
 
 .popup__close-button:hover {
