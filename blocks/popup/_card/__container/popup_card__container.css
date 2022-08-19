@@ -1,0 +1,13 @@
+.popup_card__container{
+    border: 1px solid red;
+    margin: 0 auto;
+    display: inline-block;
+    width: max-content; 
+    position: fixed;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
