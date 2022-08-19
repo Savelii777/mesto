@@ -1,6 +1,7 @@
 const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const popupImage = document.querySelector('.popup_image');
+const popupCard = document.querySelector('.popup_card');
 const popupInputs = document.querySelector('.popup__inputs');
 const popupImageInputs = document.querySelector('.popup_image__inputs');
 const inputName = document.querySelector('.popup__input_type_name');
@@ -9,6 +10,7 @@ const inputImageName = document.querySelector('.popup__input_type_nameOfImage');
 const inputImageLink = document.querySelector('.popup__input_type_linkOfImage');
 const closeButton = document.querySelector('.popup__close-button');
 const closeImageButton = document.querySelector('.popup_image__close-button');
+const closeCardButton = document.querySelector('.popup_card__close-button');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const addImageButton = document.querySelector('.profile__add-button');
@@ -44,27 +46,52 @@ const initialCards = [
 editButton.addEventListener('click', showPopup);
 addImageButton.addEventListener('click', showImagePopup);
 
+// Дорогой ревьювер, помогите пожалуйста!!! При добавлении класса с _active ничего не происходит, только при замене класса меняется картинка
+document.addEventListener('click', ({ target: targ }) => {
+  if (targ.classList.contains('element__like-button')||targ.classList.contains('element__like-button_active')) {
+    targ.classList.toggle('element__like-button_active');
+    targ.classList.toggle('element__like-button');
+    console.log(targ);
+  }
+});
+//Удаление карточек
+document.addEventListener('click', ({ target: targ }) => {
+  if (targ.classList.contains('element__delete-button')) {
+    targ.parentNode.remove(targ);
+    }
+});
 
+document.addEventListener('click', ({ target: targ }) => {
+  if (targ.classList.contains('element__image')) {
+    showCardPopup();
+    popupCard.querySelector('.popup_card__image').src = targ.src;
+    popupCard.querySelector('.popup_card__caption').textContent = targ.alt;
+    console.log(targ.alt);
+  }
+});
 
+//Добавление карточек на страницу через template
 function initialiseCards () {
   initialCards.forEach(elmnt => {
     const elementTemplate = document.querySelector('#element').content;
     const element = elementTemplate.querySelector('.element').cloneNode(true);
     element.querySelector('.element__image').src = elmnt.link;
     element.querySelector('.element__title').textContent = elmnt.name;
+    element.querySelector('.element__image').alt = elmnt.name;
     elements.append(element);
     console.log('Добавлено успешно');
   }); 
 };
+//Добавление карточки в начало через template
 function initialiseCard () {
-
     const elementTemplate = document.querySelector('#element').content;
     const element = elementTemplate.querySelector('.element').cloneNode(true);
     element.querySelector('.element__image').src = initialCards[initialCards.length-1].link;
     element.querySelector('.element__title').textContent = initialCards[initialCards.length-1].name;
-    elements.append(element);
+    element.querySelector('.element__image').alt = initialCards[initialCards.length-1].name;
+    elements.prepend(element);
     console.log('Добавлено успешно');
- 
+    console.log(initialCards);
 };
 
 
@@ -98,6 +125,10 @@ function showPopup() {
     popupImageInputs.addEventListener('submit', addImage);
     closeImageButton.addEventListener('click', closePopupImage);
   }
+  function showCardPopup() {
+    popupCard.classList.add('popup_opened');
+    closeCardButton.addEventListener('click', closePopupCard);
+  }
   function closePopup() {
     inputName.value = profileName.textContent;
     inputJob.value = profileJob.textContent;
@@ -107,6 +138,9 @@ function showPopup() {
     inputImageName.value = '';
     inputImageLink.value = '';
     popupImage.classList.remove('popup_opened');
+  }
+  function closePopupCard() {
+    popupCard.classList.remove('popup_opened');
   }
 
   initialiseCards();

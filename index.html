@@ -62,20 +62,31 @@
             <form id="add-image" class="popup__inputs popup_image__inputs">
                 <input class="popup__input popup__input_type_nameOfImage" type="text" required="required" placeholder="Название">
                 <input class="popup__input popup__input_type_linkOfImage" type="text" required="required" placeholder="Ссылка на картинку">
-                <button type="submit" form="add-image" class="popup__save-button"> Сохранить</button>
+                <button type="submit" form="add-image" class="popup__save-button"> Создать</button>
             </form>
             <button type="button" class="popup__close-button popup_image__close-button">
             </button>
         </div>
     </div>
+    <div class="popup popup_card">
+            <div class="popup_card__container">
+                <img class="popup_card__image">
+                <figcaption class="popup_card__caption"></figcaption>
+                <button type="button" class="popup__close-button popup_card__close-button ">
+                </button>
+            </div>
+        
+            
+    </div>
     <template id="element">
         <div class="element">
             <img class="element__image">
+            <button type="button" class="element__delete-button">
+            </button>
             <div class="element__botom-section">
                 <h3 class="element__title">
                 </h3>
                 <button type="button" class="element__like-button">
-
                 </button>
             </div>
         </div>
