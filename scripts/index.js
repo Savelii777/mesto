@@ -1,16 +1,16 @@
 const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
-const popupImage = document.querySelector('.popup_image');
-const popupCard = document.querySelector('.popup_card');
+const popupImage = document.querySelector('.popup-image');
+const popupCard = document.querySelector('.popup-card');
 const popupInputs = document.querySelector('.popup__inputs');
-const popupImageInputs = document.querySelector('.popup_image__inputs');
+const popupImageInputs = document.querySelector('.popup-image__inputs');
 const inputName = document.querySelector('.popup__input_type_name');
 const inputJob = document.querySelector('.popup__input_type_job');
 const inputImageName = document.querySelector('.popup__input_type_nameOfImage');
 const inputImageLink = document.querySelector('.popup__input_type_linkOfImage');
 const closeButton = document.querySelector('.popup__close-button');
-const closeImageButton = document.querySelector('.popup_image__close-button');
-const closeCardButton = document.querySelector('.popup_card__close-button');
+const closeImageButton = document.querySelector('.popup-image__close-button');
+const closeCardButton = document.querySelector('.popup-card__close-button');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const addImageButton = document.querySelector('.profile__add-button');
@@ -64,8 +64,8 @@ document.addEventListener('click', ({ target: targ }) => {
 document.addEventListener('click', ({ target: targ }) => {
   if (targ.classList.contains('element__image')) {
     showCardPopup();
-    popupCard.querySelector('.popup_card__image').src = targ.src;
-    popupCard.querySelector('.popup_card__caption').textContent = targ.alt;
+    popupCard.querySelector('.popup-card__image').src = targ.src;
+    popupCard.querySelector('.popup-card__caption').textContent = targ.alt;
     console.log(targ.alt);
   }
 });
