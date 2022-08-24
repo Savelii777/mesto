@@ -7,6 +7,9 @@
     height: 100%;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
     visibility: hidden;
     transition: all 0.4s ease 0s;
