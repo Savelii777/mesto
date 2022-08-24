@@ -13,16 +13,15 @@
     <header class="header">
         <div class="header__logo">
         </div>
-        <div class="header__line"></div>
     </header>
     <main class="main">
         <section class="profile">
             <div class="profile__avatar">
             </div>
             <div class="profile__info">
-                <h3 class="profile__name">
+                <h1 class="profile__name">
 Жак-Ив Кусто
-                </h3>
+                </h1>
                 <p class="profile__job">
 Исследователь океана
                 </p>
@@ -32,7 +31,7 @@
             </button>
         </section>
         <section class="elements">
-           
+           <!-- 6 карточек с изображениями -->
         </section>
     </main>
     <footer class="footer">
@@ -40,17 +39,17 @@
             © 2020 Mesto Russia
         </p>
     </footer>
-    <div class="popup">
+    <div class="popup popup-profile">
         <div class="popup__container">
             <h3 class="popup__title">
                 Редактировать профиль
             </h3>
-            <form id="add-utility" class="popup__inputs">
+            <form id="add-utility" class="popup__inputs popup__inputs_profile" name="profile_form">
                 <input class="popup__input popup__input_type_name" type="text" required="required" value="Жак-Ив Кусто">
                 <input class="popup__input popup__input_type_job" type="text" required="required" value="Исследователь океана">
                 <button type="submit" form="add-utility" class="popup__save-button"> Сохранить</button>
             </form>
-            <button type="button" class="popup__close-button">
+            <button type="button" class="popup__close-button popup-profile__close-button">
             </button>
         </div>
     </div>
@@ -59,9 +58,9 @@
             <h3 class="popup__title">
                 Новое место
             </h3>
-            <form id="add-image" class="popup__inputs popup-image__inputs">
-                <input class="popup__input popup__input_type_nameOfImage" type="text" required="required" placeholder="Название">
-                <input class="popup__input popup__input_type_linkOfImage" type="text" required="required" placeholder="Ссылка на картинку">
+            <form id="add-image" class="popup__inputs popup-image__inputs" name="image_form">
+                <input class="popup__input popup__input_type_name-image" type="text" required="required" placeholder="Название">
+                <input class="popup__input popup__input_type_link-image" type="text" required="required" placeholder="Ссылка на картинку">
                 <button type="submit" form="add-image" class="popup__save-button"> Создать</button>
             </form>
             <button type="button" class="popup__close-button popup-image__close-button">
@@ -69,18 +68,18 @@
         </div>
     </div>
     <div class="popup popup-card">
-            <div class="popup-card__container">
-                <img class="popup-card__image">
+            <figure class="popup-card__container">
+                <img class="popup-card__image" alt="" src="">
                 <figcaption class="popup-card__caption"></figcaption>
                 <button type="button" class="popup__close-button popup-card__close-button ">
                 </button>
-            </div>
+            </figure>
         
             
     </div>
     <template id="element">
         <div class="element">
-            <img class="element__image">
+            <img class="element__image" src="" alt="">
             <button type="button" class="element__delete-button">
             </button>
             <div class="element__botom-section">
@@ -91,6 +90,7 @@
             </div>
         </div>
       </template> 
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 

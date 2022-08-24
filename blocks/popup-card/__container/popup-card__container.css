@@ -2,11 +2,6 @@
     margin: 0 auto;
     display: inline-block;
     width: max-content;
-    position: fixed;
-    padding: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    right: 0;
+    position: relative;
     z-index: 1;
 }
