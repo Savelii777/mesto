@@ -17,11 +17,39 @@ const addImageButton = document.querySelector('.profile__add-button');
 const popupTitle = document.querySelector('.popup__title');
 const elementSection = document.querySelector('.elements');
 
-editButton.addEventListener('click',() => {showPopup(popupProfile)
+
+editButton.addEventListener('click',() => {
+  showPopup(popupProfile);
+  EventPopupListeners (); 
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
 });
-addImageButton.addEventListener('click',() => {showPopup(popupImage)});
+
+
+addImageButton.addEventListener('click',() => {showPopup(popupImage)
+  EventPopupListeners ();
+}
+);
+
+//добавляет слушатель попапам
+function EventPopupListeners () {
+  Array.from(document.querySelectorAll('.popup')).forEach((popup)=>{
+    popup.addEventListener('click', (evt)=>{
+      if(evt.target.classList.contains('popup'))
+      { 
+        closePopup(popup);
+      }
+    });
+   document.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === 27) {
+       closePopup(popup);
+          }
+      });
+  });
+ }
+
+
+
 closeProfileButton.addEventListener('click', ()=> {closePopup(popupProfile)});
 closeImageButton.addEventListener('click', () => {
   inputImageName.value = "";
@@ -99,6 +127,7 @@ function showPopup(popup) {
   function closePopup(popup) {
       popup.classList.remove('popup_opened');
     }
+  
   
 
   initialiseCards();
