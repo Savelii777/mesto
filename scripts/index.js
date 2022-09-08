@@ -20,7 +20,6 @@ const elementSection = document.querySelector('.elements');
 
 editButton.addEventListener('click',() => {
   showPopup(popupProfile);
-  EventPopupListeners (); 
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
 });
@@ -121,6 +120,7 @@ function saveInfo(evt) {
 //открытие попапа
 function showPopup(popup) {
       popup.classList.add('popup_opened');
+      EventPopupListeners (); 
   }
   
   //закрытие попапа
