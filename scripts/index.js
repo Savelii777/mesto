@@ -53,11 +53,23 @@ function addPopupEscTrigger (popup) {
 }
 
 
-profileButtonClose.addEventListener('click', ()=> {closePopup(popupProfile)});
-imageButtonClose.addEventListener('click', () => {
+profileButtonClose.addEventListener('click', ()=> {closePopup(popupProfile)
+const nameError = popupProfile.querySelector(`.${nameInput.id}-error`);
+const jobError = popupProfile.querySelector(`.${jobInput.id}-error`);
+nameInput.classList.remove('popup__input_type_error')
+nameError.textContent = '';
+jobInput.classList.remove('popup__input_type_error')
+jobError.textContent = '';
+});
+imageButtonClose.addEventListener('click', () => { closePopup(popupImage)
   imageNameInput.value = "";
   imageLinkInput.value = "";
-  closePopup(popupImage)});
+  const imageNameError = popupImage.querySelector(`.${imageNameInput.id}-error`);
+const imageLinkError = popupImage.querySelector(`.${imageLinkInput.id}-error`);
+imageNameInput.classList.remove('popup__input_type_error')
+imageNameError.textContent = '';
+imageLinkInput.classList.remove('popup__input_type_error')
+imageLinkError.textContent = '';});
 cardButtonClose.addEventListener('click', () => {closePopup(popupCard)});
 popupInputForm.addEventListener('submit', saveInfo);
 popupImageInputForm.addEventListener('submit', addImage);
