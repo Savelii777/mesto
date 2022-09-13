@@ -123,7 +123,6 @@ function saveInfo(evt) {
       imageNameInput.value = '';
       imageLinkInput.value = '';
       closePopup(popupImage);
-      
     }
 //открытие попапа
 function showPopup(popup) {

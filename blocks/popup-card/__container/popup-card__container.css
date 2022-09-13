@@ -1,7 +1,8 @@
 .popup-card__container{
-    margin: 0 auto;
+    margin: auto;
     display: inline-block;
     width: max-content;
     z-index: 1;
     position: relative;
 }
+
