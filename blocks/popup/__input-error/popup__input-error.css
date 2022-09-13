@@ -7,4 +7,10 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+    max-width: 358px;
+}
+@media screen and (max-width: 500px) {
+    .popup__input-error{
+        width: 238px;
+    }
 }
