@@ -17,7 +17,6 @@ const imageButtonAdd = document.querySelector('.profile__add-button');
 const popupTitle = document.querySelector('.popup__title');
 const elementSection = document.querySelector('.elements');
 
-
 buttonEdit.addEventListener('click',() => {
   showPopup(popupProfile);
   addEventPopupListeners (popupProfile)
@@ -118,6 +117,9 @@ function saveInfo(evt) {
       evt.preventDefault();
       const element = initialiseCard(imageLinkInput.value,imageNameInput.value);
       addCard(element);
+      const imageButtonSave = popupImage.querySelector('.popup__save-button')
+      imageButtonSave.disabled = true;
+      imageButtonSave.classList.add('popup__save-button_type_inactive')
       imageNameInput.value = '';
       imageLinkInput.value = '';
       closePopup(popupImage);
