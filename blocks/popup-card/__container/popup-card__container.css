@@ -2,6 +2,6 @@
     margin: 0 auto;
     display: inline-block;
     width: max-content;
-    position: relative;
     z-index: 1;
+    position: relative;
 }

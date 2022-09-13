@@ -1,9 +1,9 @@
 .popup-card__image{
     padding: 0;
-    position: relative;
     margin: 0 auto;
     max-width: 75vw;
     max-height: 75vh;
-    min-height: 300px;
     min-width: 240px;
+    position: relative;
+    width: 100%;
 }
