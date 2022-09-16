@@ -9,7 +9,7 @@
     line-height: 15px;
     max-width: 358px;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 320px) {
     .popup__input-error{
         width: 238px;
     }
