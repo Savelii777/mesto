@@ -8,9 +8,12 @@
     font-size: 12px;
     line-height: 15px;
     max-width: 358px;
+    width: calc(100% - (36px * 2));
 }
+
 @media screen and (max-width: 320px) {
     .popup__input-error{
-        width: 238px;
+        width: calc(100% - (22px * 2));
+        max-width: 238px;
     }
 }
