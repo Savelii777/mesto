@@ -17,62 +17,54 @@ const imageButtonAdd = document.querySelector('.profile__add-button');
 const popupTitle = document.querySelector('.popup__title');
 const elementSection = document.querySelector('.elements');
 const imageButtonSave = popupImage.querySelector('.popup__save-button')
-const popupList = document.querySelectorAll('.popup');
 
-
-function addPopupClickListener(popupList){
-  popupList.forEach((popup) => {
-    document.addEventListener('keydown', closeByEsc(popup));
-    popup.addEventListener('click', closeByClick(popup))
-  })
+function closeByEsc(event) {
+  if (event.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    hidePopup(popup);
+  }
 }
-
-
-const closeByClick = (popup) => (evt) => {
-  console.log('слушатель клика добавился для '+ popup.classList)
-  if (evt.target.classList.contains('popup')) {
+function closeByClick (evt){
+  if (evt.target.classList.contains('popup_opened')) {
+    const popup = document.querySelector('.popup_opened');
     hidePopup(popup);
   }
 };
 
-const closeByEsc = (popup) => (evt) => {
-  if (evt.key === 'Escape') {
-    hidePopup(popup);
+
+
+function createPopupProfile(){
+ 
+  function openPopup () {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+    showPopup(popupProfile);
+  }  
+  function closePopup () {
+    hidePopup(popupProfile)
+    removeFormErrors(popupProfile);
   }
+  buttonEdit.addEventListener('click', openPopup);
+  profileButtonClose.addEventListener('click', closePopup);
+
+}
+
+function createPopupImage(){
+  function openPopup () {
+    showPopup(popupImage)
+  }  
+  function closePopup () {
+    hidePopup(popupImage);
+    imageNameInput.value = "";
+    imageLinkInput.value = "";
+    removeFormErrors(popupImage);
+  }
+  imageButtonAdd.addEventListener('click', openPopup);
+  imageButtonClose.addEventListener('click', closePopup);
+
 }
 
 
-
-
-
-
-buttonEdit.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-  showPopup(popupProfile)
-});
-
-
-profileButtonClose.addEventListener('click', () => {
-  hidePopup(popupProfile)
-  removeFormErrors(popupProfile);
-});
-
-
-
-
-imageButtonAdd.addEventListener('click', () => {
-  showPopup(popupImage)
-}
-);
-
-imageButtonClose.addEventListener('click', () => {
-  hidePopup(popupImage)
-  imageNameInput.value = "";
-  imageLinkInput.value = "";
-  removeFormErrors(popupImage);
-});
-cardButtonClose.addEventListener('click', () => { hidePopup(popupCard) });
 popupInputForm.addEventListener('submit', saveInfo);
 popupImageInputForm.addEventListener('submit', addImage);
 
@@ -107,12 +99,21 @@ function initialiseCard(link, name) {
   });
   //открытие карточки
   const cardImageOpen = element.querySelector('.element__image')
-  cardImageOpen.addEventListener('click', (event) => {
-    showPopup(popupCard);
-    popupCard.querySelector('.popup-card__image').src = cardImageOpen.src;
-    popupCard.querySelector('.popup-card__image').alt = cardImageOpen.alt;
-    popupCard.querySelector('.popup-card__caption').textContent = cardImageOpen.alt;
-  });
+
+  function createPopupCard(){
+   function openPopup () {
+      showPopup(popupCard);
+      popupCard.querySelector('.popup-card__image').src = cardImageOpen.src;
+      popupCard.querySelector('.popup-card__image').alt = cardImageOpen.alt;
+      popupCard.querySelector('.popup-card__caption').textContent = cardImageOpen.alt;
+    }  
+    function closePopup () {
+      hidePopup(popupCard);
+    }
+    cardImageOpen.addEventListener('click', openPopup)
+    cardButtonClose.addEventListener('click', closePopup);
+  } 
+  createPopupCard();
   return element;
 };
 
@@ -139,15 +140,20 @@ function addImage(evt) {
 //открытие попапа
 function showPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener("keydown", closeByEsc);
+  popup.addEventListener("mousedown", closeByClick);
 }
 
 //закрытие попапа
 function hidePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener("keydown", closeByEsc);
+  popup.removeEventListener("mousedown", closeByClick);
 }
 
 
 
 initialiseCards();
-addPopupClickListener(popupList);
+createPopupProfile();
+createPopupImage();
 
