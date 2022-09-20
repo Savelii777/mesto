@@ -41,7 +41,7 @@ const setEventListeners = (formElement, config) => {
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    if (!formElement.classList.contains('popup-card')) {
+    if (!formElement.classList.contains(config.popupCarsSelector)) {
       setEventListeners(formElement, config);
     }
   });
@@ -68,7 +68,8 @@ const validationConfig = {
   inputSelector: '.popup__input',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
-  inactiveButtonClass: 'popup__save-button_type_inactive'
+  inactiveButtonClass: 'popup__save-button_type_inactive',
+  popupCarsSelector: 'popup-card'
 }
 //bugfix: сброс ошибок
 function removeFormErrors(popup) {
