@@ -4,7 +4,7 @@
     width: calc(100% - (36px * 2));
 
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 350px) {
     .popup__inputs{
         margin: 45px auto 0 auto;
         width: calc(100% - (22px * 2));

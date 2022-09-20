@@ -11,7 +11,7 @@
     width: calc(100% - (36px * 2));
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 350px) {
     .popup__input-error{
         width: calc(100% - (22px * 2));
         max-width: 238px;
