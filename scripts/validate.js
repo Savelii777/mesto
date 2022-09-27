@@ -69,23 +69,24 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
   inactiveButtonClass: 'popup__save-button_type_inactive',
-  popupCarsSelector: 'popup-card'
+  popupCarsSelector: 'popup-card',
+  popupProfileClass: 'popup-profile'
 }
 //bugfix: сброс ошибок
-function removeFormErrors(popup) {
-  if (popup.classList.contains('popup-profile')) {
+function removeFormErrors(popup, config) {
+  if (popup.classList.contains(config.popupProfileClass)) {
     const nameError = popupProfile.querySelector(`.${nameInput.id}-error`);
     const jobError = popupProfile.querySelector(`.${jobInput.id}-error`);
-    nameInput.classList.remove('popup__input_type_error')
+    nameInput.classList.remove(config.inputErrorClass)
     nameError.textContent = '';
-    jobInput.classList.remove('popup__input_type_error')
+    jobInput.classList.remove(config.inputErrorClass)
     jobError.textContent = '';
   } else {
     const imageNameError = popupImage.querySelector(`.${imageNameInput.id}-error`);
     const imageLinkError = popupImage.querySelector(`.${imageLinkInput.id}-error`);
-    imageNameInput.classList.remove('popup__input_type_error')
+    imageNameInput.classList.remove(config.inputErrorClass)
     imageNameError.textContent = '';
-    imageLinkInput.classList.remove('popup__input_type_error')
+    imageLinkInput.classList.remove(config.inputErrorClass)
     imageLinkError.textContent = '';
   }
 }
