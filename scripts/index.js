@@ -88,7 +88,7 @@ function initialiseCard(link, name) {
   //удаление карточек
   const buttonDelete = element.querySelector('.element__delete-button')
   buttonDelete.addEventListener('click', (event) => {
-    buttonDelete.parentNode.closest('.element').remove();
+    buttonDelete.closest('.element').remove();
   });
   //открытие карточки
   const cardImageOpen = element.querySelector('.element__image')
