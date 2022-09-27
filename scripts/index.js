@@ -40,7 +40,10 @@ buttonEdit.addEventListener('click', () => {
 });
 profileButtonClose.addEventListener('click', () => {
     hidePopup(popupProfile)
-    removeFormErrors(popupProfile);
+    removeFormErrors(popupProfile, validationConfig);
+});
+cardButtonClose.addEventListener('click', () => {
+  hidePopup(popupCard);
 });
 /////////////////////////////////////////////////////////////////
 
@@ -52,7 +55,7 @@ imageButtonClose.addEventListener('click', () => {
     hidePopup(popupImage);
     imageNameInput.value = "";
     imageLinkInput.value = "";
-    removeFormErrors(popupImage);
+    removeFormErrors(popupImage, validationConfig);
 })
 
 popupInputForm.addEventListener('submit', saveInfo);
@@ -85,7 +88,7 @@ function initialiseCard(link, name) {
   //удаление карточек
   const buttonDelete = element.querySelector('.element__delete-button')
   buttonDelete.addEventListener('click', (event) => {
-    buttonDelete.parentNode.remove();
+    buttonDelete.parentNode.closest('.element').remove();
   });
   //открытие карточки
   const cardImageOpen = element.querySelector('.element__image')
@@ -95,9 +98,7 @@ function initialiseCard(link, name) {
     popupCard.querySelector('.popup-card__image').alt = cardImageOpen.alt;
     popupCard.querySelector('.popup-card__caption').textContent = cardImageOpen.alt;
   })
-  cardButtonClose.addEventListener('click', () => {
-    hidePopup(popupCard);
-  });
+
 
   return element;
 };
