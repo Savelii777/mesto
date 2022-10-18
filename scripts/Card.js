@@ -1,31 +1,7 @@
-import { showPopup, popupCard } from "./index.js";
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
+import {showPopup} from "../utils/utils.js";
+import {initialCards, popupCard} from "../utils/constants.js"
   class Card{
+    popupCardImage = popupCard.querySelector('.popup-card__image')
     constructor(data, templateSelector) {
         this._title = data.name;
         this._image = data.link;
@@ -43,14 +19,15 @@ const initialCards = [
         this._element = this._getTemplate();
         this._setEventListeners(); 
     this._element.querySelector('.element__image').src = `${this._image}`;
+    this._element.querySelector('.element__image').alt = this._title;
     this._element.querySelector('.element__title').textContent = this._title;
     
     return this._element; 
       }
 _handleOpenPopup() {
     showPopup(popupCard);
-    popupCard.querySelector('.popup-card__image').src = this._image;
-    popupCard.querySelector('.popup-card__image').alt = this._title;
+    this.popupCardImage.src = this._image;
+    this.popupCardImage.alt = this._title;
     popupCard.querySelector('.popup-card__caption').textContent = this._title;
 } 
 _deleteCard() {
