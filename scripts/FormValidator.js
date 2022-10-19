@@ -5,7 +5,8 @@ const validationConfig = {
     errorClass: 'popup__input-error_active',
     inactiveButtonClass: 'popup__save-button_type_inactive',
     popupCarsSelector: 'popup-card',
-    popupProfileClass: 'popup-profile'
+    popupProfileClass: 'popup-profile',
+    inputError: '.popup__input-error'
   }
 
 class FormValidator{
@@ -18,6 +19,7 @@ class FormValidator{
     this._inactiveButtonClass = config.inactiveButtonClass
     this._popupCarsSelector = config.popupCarsSelector
     this._popupProfileClass = config.popupProfileClass
+    this._inputError = config.inputError
     this._formElement = document.querySelector(formElement)
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector))
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector)
@@ -78,24 +80,15 @@ class FormValidator{
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
 }
-  removeFormErrors(firstInput, secondInput, popup) {
-
-    if (popup.classList.contains('.popup-profile')) {
-      const nameError = popup.querySelector(`.${firstInput.id}-error`);
-      const jobError = popup.querySelector(`.${secondInput.id}-error`);
-      firstInput.classList.remove(this._inputErrorClass)
-      nameError.textContent = '';
-      secondInput.classList.remove(this._inputErrorClass)
-      jobError.textContent = '';
-    } 
-    else {
-      const imageNameError = popup.querySelector(`.${firstInput.id}-error`);
-      const imageLinkError = popup.querySelector(`.${secondInput.id}-error`);
-      firstInput.classList.remove(this._inputErrorClass)
-      imageNameError.textContent = '';
-      secondInput.classList.remove(this._inputErrorClass)
-      imageLinkError.textContent = '';
-    }
+  removeFormErrors(popup) {
+    const popupInputErrors = popup.querySelectorAll(this._inputError)
+    const popupInputs = popup.querySelectorAll(this._inputSelector)
+    popupInputs.forEach(input => {
+      input.classList.remove(this._inputErrorClass)
+    });
+    popupInputErrors.forEach(error => {
+      error.textContent = '';
+    });
   }
   submitButtonDisable(imageButtonSave){
     imageButtonSave.disabled = true;

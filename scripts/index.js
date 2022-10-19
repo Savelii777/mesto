@@ -23,8 +23,7 @@ const elementSection = document.querySelector('.elements');
 const imageButtonSave = popupImage.querySelector('.popup__save-button')
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.element-template');
-  const cardElement = card.generateCard();
+  const cardElement = createCard(item, '.element-template')
   elementSection.append(cardElement);
 }); 
 const profileValidation = new FormValidator(validationConfig, '.popup-profile')
@@ -44,7 +43,7 @@ function closeByClick (evt){
 };
 
 buttonEdit.addEventListener('click', (evt) => {
-    profileValidation.removeFormErrors(nameInput, jobInput, popupProfile)
+    profileValidation.removeFormErrors(popupProfile)
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     showPopup(popupProfile);
@@ -57,8 +56,7 @@ cardButtonClose.addEventListener('click', () => {
 });
 
 imageButtonAdd.addEventListener('click', (evt) => {
-
-  imageValidation.removeFormErrors(imageNameInput, imageLinkInput, popupImage)
+  imageValidation.removeFormErrors(popupImage)
   showPopup(popupImage)
 });
 
