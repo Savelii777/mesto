@@ -1,9 +1,9 @@
 export default class Section{
-    constructor({items,renderer}, containerSelector)
+    constructor({items,renderer}, container)
     {
         this._items = items;
         this._renderer = renderer;
-        this._containerSelector = containerSelector;
+        this._container = container;
     }
     renderElements(){
         this._items.forEach(item => {
@@ -12,10 +12,10 @@ export default class Section{
     }
     
     addItem(domElement){
-        this._containerSelector.append(domElement);
+        this._container.append(domElement);
     }
 
     addNewItem(domElement){
-        this._containerSelector.prepend(domElement);
+        this._container.prepend(domElement);
     }
 }

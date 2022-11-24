@@ -1,14 +1,5 @@
-const validationConfig = {
-    submitButtonSelector: '.popup__save-button',
-    inputSelector: '.popup__input',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active',
-    inactiveButtonClass: 'popup__save-button_type_inactive',
-    popupCarsSelector: 'popup-card',
-    popupProfileClass: 'popup-profile',
-    inputError: '.popup__input-error'
-  }
 
+import {validationConfig} from '../utils/constants.js'
 class FormValidator{
  
   constructor(config, formElement){
@@ -71,7 +62,6 @@ class FormValidator{
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
-//   };
  }
  _hideInputError(inputElement)
 {
@@ -80,19 +70,14 @@ class FormValidator{
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
 }
-  removeFormErrors(popup) {
-    const popupInputErrors = popup.querySelectorAll(this._inputError)
-    const popupInputs = popup.querySelectorAll(this._inputSelector)
-    popupInputs.forEach(input => {
-      input.classList.remove(this._inputErrorClass)
-    });
-    popupInputErrors.forEach(error => {
-      error.textContent = '';
+  removeFormErrors() {
+    this._inputList.forEach(input => {
+      this._hideInputError(input)
     });
   }
-  submitButtonDisable(imageButtonSave){
-    imageButtonSave.disabled = true;
-    imageButtonSave.classList.add('popup__save-button_type_inactive')
+  submitButtonDisable(){
+    this._buttonElement.disabled = true;
+    this._buttonElement.classList.add(this._inactiveButtonClass)
   }
 }
 

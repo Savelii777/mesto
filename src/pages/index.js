@@ -1,5 +1,5 @@
 import './index.css';
-import {initialCards} from "../components/Card.js";
+import {initialCards, buttonEdit, popupProfile, popupImage, nameInput, jobInput, imageButtonAdd, elementSection} from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Card.js";
 import Popup from "../components/Popup.js";
@@ -7,25 +7,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import {validationConfig, FormValidator} from "../components/FormValidator.js"
 import Section from "../components/Section.js"
-const buttonEdit = document.querySelector('.profile__edit-button');
-const popupProfile = document.querySelector('.popup-profile');
-const popupImage = document.querySelector('.popup-image');
-const popupCard = document.querySelector('.popup-card');
-const popupInputForm = document.querySelector('.popup__inputs_profile');
-const popupImageInputForm = document.querySelector('.popup-image__inputs');
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_job');
-const imageNameInput = document.querySelector('.popup__input_type_name-image');
-const imageLinkInput = document.querySelector('.popup__input_type_link-image');
-const profileButtonClose = popupProfile.querySelector('.popup-profile__close-button');
-const imageButtonClose = popupImage.querySelector('.popup-image__close-button');
-const cardButtonClose = popupCard.querySelector('.popup-card__close-button');
-const profileName = document.querySelector('.profile__name');
-const profileJob = document.querySelector('.profile__job');
-const imageButtonAdd = document.querySelector('.profile__add-button');
-const popupTitle = document.querySelector('.popup__title');
-const elementSection = document.querySelector('.elements'); 
-const imageButtonSave = popupImage.querySelector('.popup__save-button')
+
 
 //Создание экземпляров объектов popup
 
@@ -37,9 +19,7 @@ const popupWithImageForm  = new PopupWithForm(".popup-image", submitPopupImage)
 const defaultCardSection = new Section({
   items: initialCards,
   renderer:(item) => {
-      const card = new Card(item, '.element-template', handleCardClicker);
-      const cardElementNode = card.generateCard();
-      defaultCardSection.addItem(cardElementNode);   
+    defaultCardSection.addItem(createCard(item) );
   }
 },
 elementSection
@@ -52,7 +32,10 @@ const informationAboutUser = new UserInfo({
   infoSelector: ".profile__job",
 });
 
-
+function createCard(item){
+  const card = new Card(item, '.element-template', handleCardClicker);
+  return card.generateCard();
+}
 //открытие карточки на весь экран
 function handleCardClicker(name, link) {
   popupWithImage.open(name, link);
@@ -85,13 +68,16 @@ imageValidation.enableValidation()
 //вешаем слушатели
 buttonEdit.addEventListener('click', (evt) => {
   profileValidation.removeFormErrors(popupProfile)
-  nameInput.value = informationAboutUser.getUserInfo().nameSelector;
-  jobInput.value = informationAboutUser.getUserInfo().infoSelector;
+  profileValidation.submitButtonDisable()
+  const userData =  informationAboutUser.getUserInfo();
+  nameInput.value = userData.nameSelector;
+  jobInput.value = userData.infoSelector;
   popupWithProfileForm.open();
 });
 
 imageButtonAdd.addEventListener('click', (evt) => {
 imageValidation.removeFormErrors(popupImage)
+imageValidation.submitButtonDisable()
 popupWithImageForm.open()
 });
 

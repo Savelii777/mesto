@@ -1,6 +1,5 @@
-import {initialCards, popupCard} from "../utils/constants.js"
+
 export default class Card{
-    // popupCardImage = popupCard.querySelector('.popup-card__image')
     constructor(data, templateSelector, handleCardClick) {
         this._title = data.name;
         this._image = data.link;
@@ -30,7 +29,8 @@ export default class Card{
       }
 
 _deleteCard() {
-  this._deleteButton.closest('.element').remove();
+  this._element.closest('.element').remove();
+  this._element = null
 } 
 _likingCard(){
   this._likeButton.classList.toggle('element__like-button_active');
@@ -48,4 +48,3 @@ this._likeButton.addEventListener('click', (event) => {
 }
      
 }
-export { initialCards}
