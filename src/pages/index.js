@@ -52,9 +52,7 @@ function submitPopupImage(info) {
     name: info.cardName,
     link: info.cardLink,
   };
-  const card = new Card(cardInfo, '.element-template', handleCardClicker);
-  const cardElementNode = card.generateCard();
-  defaultCardSection.addNewItem(cardElementNode);   
+  defaultCardSection.addNewItem(createCard(cardInfo));   
   popupWithImageForm.close();
 }
 
