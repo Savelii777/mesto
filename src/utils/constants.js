@@ -42,5 +42,7 @@ const imageButtonAdd = document.querySelector('.profile__add-button');
 const popupTitle = document.querySelector('.popup__title');
 const elementSection = document.querySelector('.elements'); 
 const imageButtonSave = popupImage.querySelector('.popup__save-button')
-  export {initialCards, popupCard, validationConfig, buttonEdit, popupProfile, popupImage, popupInputForm, popupImageInputForm, nameInput, jobInput, imageNameInput, imageLinkInput, profileButtonClose, imageButtonClose, cardButtonClose, profileName, profileJob, imageButtonAdd, popupTitle, elementSection, imageButtonSave}
+const avatarEditButton = document.querySelector('.profile__edit-avatar')
+const popupAvatar = document.querySelector('.popup-avatar')
+  export {initialCards, popupCard, validationConfig, buttonEdit, popupProfile, popupImage, popupInputForm, popupImageInputForm, nameInput, jobInput, imageNameInput, imageLinkInput, profileButtonClose, imageButtonClose, cardButtonClose, profileName, profileJob, imageButtonAdd, popupTitle, elementSection, imageButtonSave, avatarEditButton, popupAvatar}
   
