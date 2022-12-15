@@ -113,7 +113,7 @@ function handleCardClicker(name, link) {
 
 //Функции сабмита форм
 function submitPopupProfile(info) {
-  popupWithProfileForm.isLoading(true)
+  popupWithProfileForm.isLoading()
   api.sendUserInfoToServer(info.name, info.job)
     .then(user => {
       informationAboutUser.setUserInfo(user.name, user.about);
@@ -125,6 +125,7 @@ function submitPopupProfile(info) {
 }
 
 function submitPopupAvatar(info) {
+  popupWithAvatarForm.isLoading()
   api.sendUserAvatarToServer(info.avatar)
     .then(user => {
       informationAboutUser.setUserAvatar(user.avatar);
@@ -136,6 +137,7 @@ function submitPopupAvatar(info) {
 }
 
 function submitPopupImage(info) {
+  popupWithImageForm.isLoading()
   api.addNewCardToServer(info.cardName, info.cardLink)
     .then((card) => {
       defaultCardSection.addNewItem(createCard(card));

@@ -14,6 +14,7 @@ class FormValidator{
     this._formElement = document.querySelector(formElement)
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector))
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector)
+    this._buttonElementContent = this._buttonElement.textContent;
  }
  
  enableValidation(){
@@ -77,6 +78,7 @@ class FormValidator{
   }
   submitButtonDisable(){
     this._buttonElement.disabled = true;
+    this._buttonElement.textContent = this._buttonElementContent
     this._buttonElement.classList.add(this._inactiveButtonClass)
   }
 }
