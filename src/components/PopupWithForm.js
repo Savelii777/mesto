@@ -3,23 +3,22 @@ export default class PopupWithForm extends Popup{
     constructor(popup, callbackSubmitForm){
         super(popup)
         this._saveButton = this._popup.querySelector('.popup__save-button')
+        this._saveButtonContent = this._saveButton.textContent
+
         this._callbackSubmitForm = callbackSubmitForm;
         this._formInputs = Array.from(this._popup.querySelectorAll(".popup__input"));
         this._form = this._popup.querySelector(".popup__inputs");
     }
-    isLoading()
-    {   
-      if(this._popup.classList.contains('popup-image')){
-      this._saveButton.textContent = 'Создание...';
-      console.log(this._saveButton.textContent)
-
-      }
-      if(this._popup.classList.contains('popup-profile')||this._popup.classList.contains('popup-profile')){
-        this._saveButton.textContent = 'Сохнанение...';
-        console.log(this._saveButton.textContent)
+ 
+      isLoading(boolean, loadingText = 'Сохранение...') {
+        if(boolean) {
+          this._saveButton.textContent = loadingText
+        } else {
+          this._saveButton.textContent = this._saveButtonContent;
+        }
       }
         
-    }
+    
     _getInputValues(){
       this._formInputsValuesArr = {};
         this._formInputs.forEach((input) => {
