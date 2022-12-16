@@ -72,7 +72,7 @@ function createCard(item) {
     handleCardLike: (cardId)=>{
       api.addLikeToServer(cardId)
       .then((res) => {
-        card._likingCard(res)
+        card.likingCard(res)
       })
       .catch((err) => {
         console.log(err);
@@ -81,7 +81,7 @@ function createCard(item) {
     handleCardUnlike: (cardId)=>{
       api.deleteLikeFromServer(cardId)
       .then((res) => {
-        card._likingCard(res)
+        card.likingCard(res)
       })
       .catch((err) => {
         console.log(err);
@@ -120,11 +120,16 @@ function submitPopupProfile(info) {
     })
     .catch((err) => {
       console.log(err);
-    })    
-  popupWithProfileForm.close();
+    })
+    .finally(()=>{
+      popupWithProfileForm.isLoading(false)
+      popupWithProfileForm.close()
+    }
+    )   
 }
 
 function submitPopupAvatar(info) {
+  popupWithAvatarForm.isLoading(true)
   api.sendUserAvatarToServer(info.avatar)
     .then(user => {
       informationAboutUser.setUserAvatar(user.avatar);
@@ -132,10 +137,15 @@ function submitPopupAvatar(info) {
     .catch((err) => {
       console.log(err);
     })
-  popupWithAvatarForm.close();
+    .finally(()=>{
+      popupWithAvatarForm.isLoading(false)
+      popupWithAvatarForm.close()
+    }
+    )
 }
 
 function submitPopupImage(info) {
+  popupWithImageForm.isLoading(true, 'Создание...')
   api.addNewCardToServer(info.cardName, info.cardLink)
     .then((card) => {
       defaultCardSection.addNewItem(createCard(card));
@@ -143,7 +153,11 @@ function submitPopupImage(info) {
     .catch((err) => {
       console.log(err);
     })
-  popupWithImageForm.close();
+    .finally(()=>{
+      popupWithImageForm.isLoading(false)
+      popupWithImageForm.close()
+    }
+    )
 }
 
 

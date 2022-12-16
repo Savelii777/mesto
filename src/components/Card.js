@@ -49,7 +49,7 @@ deleteCard() {
   this._element.closest('.element').remove();
   this._element = null
 } 
-_likingCard(res){
+likingCard(res){
   this._likes = res.likes;
   this._setCountOfLikes();
   this._likeButton.classList.toggle('element__like-button_active');
