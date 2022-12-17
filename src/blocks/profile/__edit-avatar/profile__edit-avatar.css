@@ -12,7 +12,6 @@
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 0.2s linear;
-    z-index: 1;
   }
   
   .profile__edit-avatar:hover {
