@@ -120,8 +120,10 @@ function submitPopupProfile(info) {
     })
     .catch((err) => {
       console.log(err);
+      popupWithProfileForm.isLoading(false)
+      throw err;
     })
-    .finally(()=>{
+    .then(()=>{
       popupWithProfileForm.isLoading(false)
       popupWithProfileForm.close()
     }
@@ -136,8 +138,10 @@ function submitPopupAvatar(info) {
     })
     .catch((err) => {
       console.log(err);
+      popupWithAvatarForm.isLoading(false)
+      throw err;
     })
-    .finally(()=>{
+    .then(()=>{
       popupWithAvatarForm.isLoading(false)
       popupWithAvatarForm.close()
     }
@@ -152,8 +156,10 @@ function submitPopupImage(info) {
     })
     .catch((err) => {
       console.log(err);
+      popupWithImageForm.isLoading(false)
+      throw err;
     })
-    .finally(()=>{
+    .then(()=>{
       popupWithImageForm.isLoading(false)
       popupWithImageForm.close()
     }
