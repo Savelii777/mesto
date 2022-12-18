@@ -117,15 +117,13 @@ function submitPopupProfile(info) {
   api.sendUserInfoToServer(info.name, info.job)
     .then(user => {
       informationAboutUser.setUserInfo(user.name, user.about);
+      popupWithProfileForm.close()
     })
     .catch((err) => {
       console.log(err);
-      popupWithProfileForm.isLoading(false)
-      throw err;
     })
-    .then(()=>{
+    .finally(()=>{
       popupWithProfileForm.isLoading(false)
-      popupWithProfileForm.close()
     }
     )   
 }
@@ -135,15 +133,13 @@ function submitPopupAvatar(info) {
   api.sendUserAvatarToServer(info.avatar)
     .then(user => {
       informationAboutUser.setUserAvatar(user.avatar);
+      popupWithAvatarForm.close()
     })
     .catch((err) => {
       console.log(err);
-      popupWithAvatarForm.isLoading(false)
-      throw err;
     })
-    .then(()=>{
+    .finally(()=>{
       popupWithAvatarForm.isLoading(false)
-      popupWithAvatarForm.close()
     }
     )
 }
@@ -153,15 +149,13 @@ function submitPopupImage(info) {
   api.addNewCardToServer(info.cardName, info.cardLink)
     .then((card) => {
       defaultCardSection.addNewItem(createCard(card));
+      popupWithImageForm.close()
     })
     .catch((err) => {
       console.log(err);
-      popupWithImageForm.isLoading(false)
-      throw err;
     })
-    .then(()=>{
+    .finally(()=>{
       popupWithImageForm.isLoading(false)
-      popupWithImageForm.close()
     }
     )
 }
